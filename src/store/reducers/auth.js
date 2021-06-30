@@ -7,7 +7,7 @@ import {
 	LOGOUT_SUCCESS,
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
-} from '../constants/types';
+} from '../../constants/types';
 
 const initialState = {
 	isAuthenticated: !!localStorage.getItem('token'),
