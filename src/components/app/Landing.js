@@ -83,7 +83,10 @@ const Landing = () => {
 				</div>
 			</div>
 			<div className="home_content">
-				<div className="text">Welcome to Afya EHR</div>
+				<div className="text">
+					Welcome to Afya EHR!
+					<br /> <Link to="/auth/signin">Signup</Link>
+				</div>
 			</div>
 		</>
 	);
