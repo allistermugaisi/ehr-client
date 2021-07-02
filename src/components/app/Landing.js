@@ -43,23 +43,23 @@ const Landing = () => {
 					<li>
 						<Link to="#">
 							<i className="bx bx-chat"></i>
-							<span className="links_name">Appointments</span>
+							<span className="links_name">Schedule</span>
 						</Link>
-						<span className="tooltip">Appointments</span>
+						<span className="tooltip">Schedule</span>
 					</li>
 					<li>
 						<Link to="#">
 							<i className="bx bx-pie-chart-alt-2"></i>
-							<span className="links_name">Analytics</span>
+							<span className="links_name">Reports</span>
 						</Link>
-						<span className="tooltip">Analytics</span>
+						<span className="tooltip">Reports</span>
 					</li>
 					<li>
 						<Link to="#">
 							<i className="bx bx-folder"></i>
-							<span className="links_name">Documents</span>
+							<span className="links_name">File Manager</span>
 						</Link>
-						<span className="tooltip">Documents</span>
+						<span className="tooltip">Files</span>
 					</li>
 					{/* <li>
 						<Link to="#">
