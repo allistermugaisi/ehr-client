@@ -33,8 +33,8 @@ function App() {
 				<Switch>
 					<Suspense fallback={<LoadingSpinner />}>
 						<Route exact path="/" component={Landing} />
-						<Route path="/:id" component={Landing} />
-						<Route exact path="/auth/signin" component={Auth} />
+						<Route exact path="/:id" component={Landing} />
+						<Route path="/auth/signin" component={Auth} />
 					</Suspense>
 					{/* <Route path="/payment" component={Payment} /> */}
 				</Switch>

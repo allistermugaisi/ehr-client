@@ -1,8 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import Profile from '../../assets/images/profile.jpg';
 
 const Sidebar = ({ toggled, handleDrawerToggle }) => {
+	const [click, setClick] = useState(false);
+
+	const handleClick = () => setClick(!click);
 	return (
 		<>
 			<div className={toggled ? 'sidebar active' : 'sidebar'}>
@@ -27,39 +30,55 @@ const Sidebar = ({ toggled, handleDrawerToggle }) => {
 						<span className="tooltip">Home</span>
 					</li>
 					<li>
-						<Link to="/schedule">
+						<NavLink
+							to="/schedule"
+							activeClassName="active"
+							onClick={handleClick}
+						>
 							<i className="bx bx-calendar"></i>
 							<span className="links_name">Schedule</span>
-						</Link>
+						</NavLink>
 						<span className="tooltip">Schedule</span>
 					</li>
 					<li>
-						<Link to="/tasks">
+						<NavLink to="/tasks" activeClassName="active" onClick={handleClick}>
 							<i className="bx bx-calendar-week"></i>
 							<span className="links_name">Tasks</span>
-						</Link>
+						</NavLink>
 						<span className="tooltip">Tasks</span>
 					</li>
 					<li>
-						<Link to="/charts">
+						<NavLink
+							to="/charts"
+							activeClassName="active"
+							onClick={handleClick}
+						>
 							<i className="bx bx-line-chart"></i>
 							<span className="links_name">Charts</span>
-						</Link>
+						</NavLink>
 						<span className="tooltip">Charts</span>
 					</li>
 					<li>
-						<Link to="/messages">
+						<NavLink
+							to="/messages"
+							activeClassName="active"
+							onClick={handleClick}
+						>
 							<i className="bx bx-chat"></i>
 							<span className="links_name">Messages</span>
-						</Link>
+						</NavLink>
 						<span className="tooltip">Messages</span>
 					</li>
 					<li>
-						<Link to="/reports">
+						<NavLink
+							to="/reports"
+							activeClassName="active"
+							onClick={handleClick}
+						>
 							{/* <i className="bx bx-cog"></i> */}
 							<i className="bx bx-pie-chart-alt-2"></i>
 							<span className="links_name">Reports</span>
-						</Link>
+						</NavLink>
 						<span className="tooltip">Reports</span>
 					</li>
 				</ul>

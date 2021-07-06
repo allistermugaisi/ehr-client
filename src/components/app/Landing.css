@@ -131,6 +131,11 @@
 	color: #11101d;
 	background: #fff;
 }
+
+.sidebar ul li a.active {
+	color: #11101d;
+	background: #fff;
+}
 .sidebar ul li i {
 	font-size: 18px;
 	font-weight: 400;

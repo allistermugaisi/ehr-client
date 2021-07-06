@@ -6,7 +6,7 @@ const Home = () => {
 		<div>
 			<div className="text">
 				Welcome to Afya EHR homepage!
-				<br /> <Link to="/schedule">Signup</Link>
+				<br /> <Link to="/auth/signin">Signup</Link>
 			</div>
 		</div>
 	);
