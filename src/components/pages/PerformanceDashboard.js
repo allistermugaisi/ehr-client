@@ -1,7 +1,7 @@
 import React from 'react';
 
-const PerfomanceDashboard = () => {
+const PerformanceDashboard = () => {
 	return <div className="text">Performance Dashboard</div>;
 };
 
-export default PerfomanceDashboard;
+export default PerformanceDashboard;

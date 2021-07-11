@@ -1,41 +1,54 @@
+import { lazy } from 'react';
+
+// Perform code-Splitting to load components on demand
+
 // Sidebar components
-export { default as Home } from './Home';
-export { default as Schedule } from './Schedule';
-export { default as Tasks } from './Tasks';
-export { default as Charts } from './Charts';
-export { default as Messages } from './Messages';
-export { default as Reports } from './Reports';
+export const Home = lazy(() => import('./Home'));
+export const Schedule = lazy(() => import('./Schedule'));
+export const Tasks = lazy(() => import('./Tasks'));
+export const Charts = lazy(() => import('./Charts'));
+export const Messages = lazy(() => import('./Messages'));
+export const Reports = lazy(() => import('./Reports'));
 
 // Platform components
-export { default as Dashboard } from './Dashboard';
-export { default as Patients } from './Patients';
-export { default as Calendar } from './Calendar';
-export { default as Documents } from './Documents';
-export { default as PatientCommunications } from './PatientCommunications';
+export const Patients = lazy(() => import('./Patients'));
+export const Calendar = lazy(() => import('./Calendar'));
+export const Documents = lazy(() => import('./Documents'));
+export const PatientCommunications = lazy(() =>
+	import('./PatientCommunications')
+);
 
 // Clinical
-export { default as ClinicalTasks } from './ClinicalTasks';
-export { default as ERxRequests } from './ERxRequests';
-export { default as Labs } from './Labs';
-export { default as Notes } from './Notes';
+export const ClinicalTasks = lazy(() => import('./ClinicalTasks'));
+export const ERxRequests = lazy(() => import('./ERxRequests'));
+export const Labs = lazy(() => import('./Labs'));
+export const Notes = lazy(() => import('./Notes'));
 
 // Clinical & More
-export { default as Referrals } from './Referrals';
-export { default as SuperBills } from './SuperBills';
-export { default as ClinicalReports } from './ClinicalReports';
-export { default as MedicaidInteroperability } from './MedicaidInteroperability';
-export { default as MedicareInteroperability } from './MedicareInteroperability';
-export { default as QualityMeasure } from './QualityMeasure';
+export const Referrals = lazy(() => import('./Referrals'));
+export const SuperBills = lazy(() => import('./SuperBills'));
+export const ClinicalReports = lazy(() => import('./ClinicalReports'));
+export const MedicaidInteroperability = lazy(() =>
+	import('./MedicaidInteroperability')
+);
+export const MedicareInteroperability = lazy(() =>
+	import('./MedicareInteroperability')
+);
+export const QualityMeasure = lazy(() => import('./QualityMeasure'));
 
 // Billing components
-export { default as Charges } from './Charges';
-export { default as InsuranceCollections } from './InsuranceCollections';
-export { default as PatientCollections } from './PatientCollections';
-export { default as Analytics } from './Analytics';
+export const Charges = lazy(() => import('./Charges'));
+export const InsuranceCollections = lazy(() =>
+	import('./InsuranceCollections')
+);
+export const PatientCollections = lazy(() => import('./PatientCollections'));
+export const Analytics = lazy(() => import('./Analytics'));
 
 // Engage components
-export { default as PerformanceDashboard } from './PerfomanceDashboard';
-export { default as Surveys } from './Surveys';
-export { default as OnlinePresence } from './OnlinePresence';
-export { default as PatientBroadcast } from './PatientBroadcast';
-export { default as PatientIntake } from './PatientIntake';
+export const PerformanceDashboard = lazy(() =>
+	import('./PerformanceDashboard')
+);
+export const Surveys = lazy(() => import('./Surveys'));
+export const OnlinePresence = lazy(() => import('./OnlinePresence'));
+export const PatientBroadcast = lazy(() => import('./PatientBroadcast'));
+export const PatientIntake = lazy(() => import('./PatientIntake'));

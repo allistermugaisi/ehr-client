@@ -25,6 +25,7 @@ const Landing = () => {
 			<div className="home_content">
 				<Navbar
 					dropdownRef={dropdownRef}
+					sidebar={toggled}
 					searchToggled={searchToggled}
 					handleSearchToggle={handleSearchToggle}
 					isActive={isActive}

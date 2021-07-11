@@ -79,11 +79,12 @@
 	background: #fff;
 	line-height: 35px;
 	text-align: center;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	transition: 0s;
 	opacity: 0;
 	pointer-events: none;
 	display: block;
+	box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+		0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
 }
 .sidebar.active ul li .tooltip {
 	display: none;
@@ -227,6 +228,7 @@
 	height: 100%;
 	width: calc(100% - 78px);
 	left: 78px;
+	overflow-y: auto;
 	background: #e4e9f7;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2px);
 	transition: all 0.5s ease;
@@ -248,22 +250,31 @@
 /* Navbar navigation */
 nav {
 	top: 0;
-	left: 0;
-	width: 100%;
+	width: calc(100% - 78px);
 	height: 100%;
 	height: 70px;
+	position: fixed;
 	background: #00ab55;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-	z-index: 99;
+	z-index: 1200;
 }
-nav .navbar {
+.nav .navbar {
 	height: 100%;
-	max-width: calc(100% - 1rem);
-	width: 100%;
+	width: 98%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 0.5rem;
+	transition: width 0.5s ease;
+}
+.nav.active .navbar {
+	height: 100%;
+	width: calc(100% - 180px);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 0.5rem;
+	transition: width 0.5s ease;
 }
 .navbar .logo a {
 	font-size: 30px;

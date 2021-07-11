@@ -14,3 +14,12 @@ body {
 	width: 100%;
 	overflow: hidden;
 }
+
+.wait-for-loading > i {
+	position: fixed;
+	top: 40%;
+	left: 45%;
+	opacity: 0.7;
+	z-index: 5000;
+	color: #00ab55;
+}

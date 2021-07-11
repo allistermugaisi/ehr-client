@@ -1,0 +1,89 @@
+.home_container {
+	margin-top: 70px;
+	padding: 20px 1rem;
+}
+.home_cards {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 15px;
+	padding: 10px 0;
+	transition: 350ms;
+	margin: 0 20px;
+}
+.home-card-detail {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 25px;
+	border-radius: 10px;
+	background: #ffffff;
+	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+		0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+}
+.home-card-detail > i {
+	font-size: 2rem;
+}
+.home-card-inner {
+	display: flex;
+	flex-direction: column;
+}
+.home-card-inner > span {
+	color: #3c4257;
+}
+.home-card-inner > p {
+	color: #00ab55;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+/* Home info */
+.home_info {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 15px;
+	padding: 10px 0;
+	transition: 350ms;
+	margin: 20px 20px;
+}
+
+.home_appointments {
+	margin: 20px 0;
+	padding: 10px;
+	min-height: 400px;
+	border-radius: 10px;
+	background: #ffffff;
+	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+		0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+}
+.home_patient_next {
+	margin: 20px 0;
+	padding: 10px;
+	min-height: 400px;
+	border-radius: 10px;
+	background: #ffffff;
+	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+		0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+}
+.home_request_appointments {
+	margin: 20px 0;
+	padding: 10px;
+	min-height: 400px;
+	border-radius: 10px;
+	background: #ffffff;
+	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+		0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+}
+.home_analytics {
+	margin: 20px 0;
+	padding: 10px;
+	min-height: 400px;
+	border-radius: 10px;
+	background: #ffffff;
+	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+		0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+}

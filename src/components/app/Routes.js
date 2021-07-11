@@ -9,7 +9,6 @@ import {
 	Messages,
 	Reports,
 	// Platform components
-	Dashboard,
 	Patients,
 	Calendar,
 	Documents,
@@ -72,11 +71,6 @@ const routes = [
 		content: () => <Reports />,
 	},
 	// Platform routes
-	{
-		path: `/dashboard`,
-		exact: false,
-		content: () => <Dashboard />,
-	},
 	{
 		path: `/patients`,
 		exact: false,

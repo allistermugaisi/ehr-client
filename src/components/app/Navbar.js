@@ -8,11 +8,12 @@ const Navbar = ({
 	searchToggled,
 	handleSearchToggle,
 	onClick,
+	sidebar,
 	isActive,
 }) => {
 	return (
 		<>
-			<nav>
+			<nav className={sidebar ? 'nav active' : 'nav'}>
 				<div className={searchToggled ? 'navbar showInput' : 'navbar'}>
 					<div className="nav-links">
 						<ul className="links">
@@ -20,9 +21,6 @@ const Navbar = ({
 								<Link to="#">Platform</Link>
 								<i className="bx bxs-chevron-down js-arrow arrow"></i>
 								<ul className="js-sub-menu sub-menu">
-									<li>
-										<Link to="/dashboard">Dashboard</Link>
-									</li>
 									<li>
 										<Link to="/patients">Patients</Link>
 									</li>
