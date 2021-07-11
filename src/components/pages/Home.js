@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import { Tooltip, Zoom, IconButton } from '@material-ui/core';
+import { Tooltip, Zoom, IconButton, Button } from '@material-ui/core';
+import { ChatBubbleOutline, Call, FolderOpen } from '@material-ui/icons';
 import Accept from '../../assets/images/check.svg';
 import Decline from '../../assets/images/x-square.svg';
 import { makeStyles } from '@material-ui/core/styles';
@@ -153,7 +154,79 @@ const Home = () => {
 					</div>
 					<div className="home_card_info">
 						<h4>Next Patient Details</h4>
-						<div className="home_patient_next">Next Patient Details</div>
+						<div className="home_patient_next">
+							<div className="next_patient_info">
+								<div className="patient_img">
+									<img
+										src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+										alt="User avatar"
+									/>
+								</div>
+								<div className="patient_info">
+									<div className="appointment_info">
+										<div>
+											<h3>Evan Henry</h3>
+											<span>137 Roosevelt Avenue Pawtucket</span>
+										</div>
+										<span>RI 02860</span>
+									</div>
+								</div>
+							</div>
+							<div className="patient_details">
+								<div className="patient_card">
+									<h3>D.O.B</h3>
+									<p>29 February 2021</p>
+								</div>
+								<div className="patient_card">
+									<h3>Sex</h3>
+									<p>Female</p>
+								</div>
+								<div className="patient_card">
+									<h3>Weight</h3>
+									<p>56kg</p>
+								</div>
+								<div className="patient_card">
+									<h3>Height</h3>
+									<p>172cm</p>
+								</div>
+								<div className="patient_card">
+									<h3>Last Appointment</h3>
+									<p>02 June 2021</p>
+								</div>
+								<div className="patient_card">
+									<h3>Register Date</h3>
+									<p>19 Dec 2019</p>
+								</div>
+							</div>
+							<div className="patient_diagnosis">
+								<span>Asthma</span>
+								<span>Hypertension</span>
+								<span>Insomnia</span>
+							</div>
+							<div className="patient_actions">
+								<Button
+									variant="contained"
+									color="primary"
+									startIcon={<Call />}
+								>
+									(401) 555 -0125
+								</Button>
+								<Button
+									variant="outlined"
+									color="primary"
+									startIcon={<FolderOpen />}
+								>
+									Documents
+								</Button>
+								<Button
+									variant="outlined"
+									color="primary"
+									startIcon={<ChatBubbleOutline />}
+								>
+									Chat
+								</Button>
+							</div>
+						</div>
 					</div>
 					<div className="home_card_info">
 						<h4>Appointment Requests</h4>

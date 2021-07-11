@@ -9,6 +9,8 @@ const Landing = () => {
 	const [searchToggled, setSearchToggled] = useState(false);
 	const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
 
+	console.log(isActive);
+
 	const onClick = () => setIsActive(!isActive);
 
 	const handleDrawerToggle = () => {
