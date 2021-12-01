@@ -15,6 +15,7 @@ import {
 	registerFail,
 	emailVerifyFail,
 } from './errors';
+import toast from 'react-hot-toast';
 
 // Setup config headers and token
 
@@ -46,7 +47,7 @@ export const auth = () => async (dispatch) => {
 	try {
 		const response = await axios.get(`${API_URL}/profile`, token);
 		const data = await response.data;
-		console.log(data);
+		// console.log(data);
 
 		await dispatch({
 			type: AUTH_USER,
@@ -91,7 +92,8 @@ export const registerUser = (payload) => async (dispatch) => {
 			body,
 			config
 		);
-		console.log(response.data);
+		// console.log(response.data);
+		toast.success('You are now registered successfully!');
 		await dispatch({
 			type: REGISTER_SUCCESS,
 			payload: response.data,
@@ -129,6 +131,7 @@ export const loginUser = (payload) => async (dispatch) => {
 		console.log(response.data);
 
 		localStorage.setItem('userToken', response.data.token);
+		toast.success('Successfully logged in!');
 		await dispatch({
 			type: LOGIN_SUCCESS,
 			payload: response.data,
@@ -146,6 +149,7 @@ export const loginUser = (payload) => async (dispatch) => {
 // Logout User
 export const logOut = () => (dispatch) => {
 	localStorage.removeItem('token');
+	toast.success('Successfully logged out!');
 	dispatch({
 		type: LOGOUT_SUCCESS,
 	});

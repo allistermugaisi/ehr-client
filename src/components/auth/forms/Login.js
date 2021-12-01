@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
+import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 
 import { loginUser } from '../../../store/actions/auth';
@@ -43,6 +44,7 @@ const Login = ({ isSignUpMode }) => {
 		// Check for register error
 		if (error.id === 'LOGIN_FAIL') {
 			setButtonLoading(false);
+			toast.error('Invalid login credentials!');
 			// set error toast notification
 			// setMsg(error.msg.msg);
 		} else {

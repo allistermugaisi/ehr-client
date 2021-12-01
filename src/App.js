@@ -5,6 +5,7 @@ import { LoadingSpinner } from './utils/LoadingSpinner';
 import PrivateRoute from './middleware/PrivateRoute';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import { Toaster } from 'react-hot-toast';
 
 const theme = createMuiTheme({
 	shape: {
@@ -37,6 +38,7 @@ function App() {
 						<PrivateRoute exact path="/:id" component={Landing} />
 						<Route path="/auth/signin" component={Auth} />
 						<Route path="/auth/verify" component={EmailVerify} />
+						<Toaster />
 					</Suspense>
 					{/* <Route path="/payment" component={Payment} /> */}
 				</Switch>

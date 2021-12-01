@@ -11,7 +11,7 @@ import {
 } from '../../constants/types';
 
 const initialState = {
-	isAuthenticated: !!localStorage.getItem('token'),
+	isAuthenticated: !!localStorage.getItem('userToken'),
 	isEmailVerified: false,
 	isAdmin: false,
 	isLoading: false,

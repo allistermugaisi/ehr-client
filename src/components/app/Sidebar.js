@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
+
 import Profile from '../../assets/images/profile.jpg';
+import { logOut } from '../../store/actions/auth';
 
 const Sidebar = ({ toggled, handleDrawerToggle }) => {
+	const dispatch = useDispatch();
 	const [click, setClick] = useState(false);
 
 	const handleClick = () => setClick(!click);
+	const signOut = () => {
+		dispatch(logOut());
+	};
 	return (
 		<>
 			<div className={toggled ? 'sidebar active' : 'sidebar'}>
@@ -82,7 +89,7 @@ const Sidebar = ({ toggled, handleDrawerToggle }) => {
 						<span className="tooltip">Reports</span>
 					</li>
 				</ul>
-				<div className="profile_content">
+				<div className="profile_content" onClick={signOut}>
 					<div className="profile">
 						<div className="profile_details">
 							<img src={Profile} alt="profile" />
