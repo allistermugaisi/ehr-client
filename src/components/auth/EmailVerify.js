@@ -13,19 +13,19 @@ const EmailVerify = () => {
 	const location = useLocation();
 
 	const query = useQuery();
-	const encoded = query.get('encrypted');
+	const token = query.get('encrypted');
 
 	let error = useSelector((state) => state.error);
 	let isEmailVerified = useSelector((state) => state.auth.isEmailVerified);
 	let { from } = location.state || { from: { pathname: '/auth/signin' } };
 
 	const verifyEmailToken = async () => {
-		let token = { encoded };
-		await dispatch(verifyEmail(token));
+		let data = { token };
+		await dispatch(verifyEmail(data));
 	};
 
 	useEffect(() => {
-		if (encoded) {
+		if (token) {
 			verifyEmailToken();
 		}
 		// eslint-disable-next-line

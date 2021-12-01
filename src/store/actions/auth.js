@@ -152,7 +152,7 @@ export const logOut = () => (dispatch) => {
 };
 
 export const verifyEmail = (payload) => async (dispatch) => {
-	const { encoded } = payload;
+	const { token } = payload;
 
 	try {
 		// Headers
@@ -163,7 +163,7 @@ export const verifyEmail = (payload) => async (dispatch) => {
 		};
 
 		const data = {
-			token: encoded,
+			token,
 		};
 
 		// Request body
