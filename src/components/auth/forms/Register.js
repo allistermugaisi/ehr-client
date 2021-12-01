@@ -15,7 +15,7 @@ const Register = ({ isSignUpMode }) => {
 
 	let error = useSelector((state) => state.error);
 	let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-	let { from } = location.state || { from: { pathname: '/' } };
+	let { from } = location.state || { from: { pathname: '/auth/signin' } };
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [buttonLoading, setButtonLoading] = useState(false);
@@ -125,13 +125,13 @@ const Register = ({ isSignUpMode }) => {
 				<TextField
 					{...register('phone', {
 						required: 'Mobile number is required!',
-						pattern: {
-							value: /^(\+254|0)[1-9]\d{8}$/i,
-							message: 'Please enter a valid mobile number',
-						},
+						// pattern: {
+						// 	value: /^\+[0-9]{1,3}\.[0-9]{4,14}(?:x.+)?$,
+						// 	message: 'Please enter a valid mobile number',
+						// },
 					})}
 					label="Mobile number"
-					placeholder="07xxxxxxxx"
+					placeholder="401 302 2343"
 					name="phone"
 					type="number"
 					margin="normal"

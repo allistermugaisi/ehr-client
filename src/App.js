@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Landing, Auth, EmailVerify } from './components';
 import { LoadingSpinner } from './utils/LoadingSpinner';
+import PrivateRoute from './middleware/PrivateRoute';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -32,8 +33,8 @@ function App() {
 			<ThemeProvider theme={theme}>
 				<Switch>
 					<Suspense fallback={<LoadingSpinner />}>
-						<Route exact path="/" component={Landing} />
-						<Route exact path="/:id" component={Landing} />
+						<PrivateRoute exact path="/" component={Landing} />
+						<PrivateRoute exact path="/:id" component={Landing} />
 						<Route path="/auth/signin" component={Auth} />
 						<Route path="/auth/verify" component={EmailVerify} />
 					</Suspense>

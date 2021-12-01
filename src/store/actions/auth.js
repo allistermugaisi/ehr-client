@@ -168,7 +168,7 @@ export const verifyEmail = (payload) => async (dispatch) => {
 		const body = JSON.stringify({ token });
 
 		const response = await axios.post(
-			`${API_URL}/api/v1/account/accountActivate`,
+			`${API_URL}/api/v1/auth/account/activate`,
 			body,
 			config
 		);

@@ -17,7 +17,7 @@ const EmailVerify = () => {
 
 	let error = useSelector((state) => state.error);
 	let isEmailVerified = useSelector((state) => state.auth.isEmailVerified);
-	let { from } = location.state || { from: { pathname: '/login' } };
+	let { from } = location.state || { from: { pathname: '/auth/signin' } };
 
 	const verifyEmailToken = async () => {
 		let token = { encoded };
@@ -25,7 +25,9 @@ const EmailVerify = () => {
 	};
 
 	useEffect(() => {
-		verifyEmailToken();
+		if (encoded) {
+			verifyEmailToken();
+		}
 		// eslint-disable-next-line
 	}, []);
 
@@ -49,13 +51,23 @@ const EmailVerify = () => {
 	return (
 		<div
 			style={{
+				paddingTop: '50px',
 				display: 'flex',
+				flexDirection: 'column',
 				justifyContent: 'center',
 				alignItems: 'center',
 			}}
 		>
-			<h2>Your Email is address is verified successfully.</h2>
-			<h4>You now have an AfyaEHR Account. Please proceed to login page.</h4>
+			{isEmailVerified ? (
+				<>
+					<h2>Your Email is address is verified successfully.</h2>
+					<h4>
+						You now have an AfyaEHR Account. Please proceed to login page.
+					</h4>
+				</>
+			) : (
+				<h2>An error occurred during Email Verification</h2>
+			)}
 		</div>
 	);
 };
