@@ -44,7 +44,7 @@ export const auth = () => async (dispatch) => {
 	const token = tokenConfig();
 
 	try {
-		const response = await axios.get(`${API_URL}`, token);
+		const response = await axios.get(`${API_URL}/profile`, token);
 		const data = await response.data;
 		console.log(data);
 
@@ -68,7 +68,6 @@ export const loading = () => {
 export const registerUser = (payload) => async (dispatch) => {
 	const { name, practice_name, email, phone, password, password_confirmation } =
 		payload;
-	console.log(payload);
 
 	try {
 		// Headers
@@ -92,6 +91,7 @@ export const registerUser = (payload) => async (dispatch) => {
 			body,
 			config
 		);
+		console.log(response.data);
 		await dispatch({
 			type: REGISTER_SUCCESS,
 			payload: response.data,
@@ -109,7 +109,6 @@ export const registerUser = (payload) => async (dispatch) => {
 // Login User
 export const loginUser = (payload) => async (dispatch) => {
 	const { email, password } = payload;
-	console.log(payload);
 
 	try {
 		// Headers
@@ -127,7 +126,7 @@ export const loginUser = (payload) => async (dispatch) => {
 			body,
 			config
 		);
-		// console.log(response.data);
+		console.log(response.data);
 
 		localStorage.setItem('userToken', response.data.token);
 		await dispatch({
@@ -153,8 +152,7 @@ export const logOut = () => (dispatch) => {
 };
 
 export const verifyEmail = (payload) => async (dispatch) => {
-	const { token } = payload;
-	console.log(payload);
+	const { encoded } = payload;
 
 	try {
 		// Headers
@@ -164,14 +162,19 @@ export const verifyEmail = (payload) => async (dispatch) => {
 			},
 		};
 
+		const data = {
+			token: encoded,
+		};
+
 		// Request body
-		const body = JSON.stringify({ token });
+		const body = JSON.stringify({ data });
 
 		const response = await axios.post(
 			`${API_URL}/api/v1/auth/account/activate`,
 			body,
 			config
 		);
+		console.log(response.data);
 
 		await dispatch({
 			type: VERIFY_EMAIL,
