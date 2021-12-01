@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
@@ -12,11 +12,11 @@ import Input from '../../../utils/useInput';
 const Login = ({ isSignUpMode }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
-	let location = useLocation();
+	// let location = useLocation();
 
 	let error = useSelector((state) => state.error);
 	let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-	let { from } = location.state || { from: { pathname: '/' } };
+	// let { from } = location.state || { from: { pathname: '/' } };
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [buttonLoading, setButtonLoading] = useState(false);
@@ -52,7 +52,7 @@ const Login = ({ isSignUpMode }) => {
 
 	useEffect(() => {
 		if (isAuthenticated) {
-			history.replace(from);
+			history.push('/');
 		}
 		// eslint-disable-next-line
 	}, [isAuthenticated]);
