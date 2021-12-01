@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 import { registerUser } from '../../../store/actions/auth';
 import AdornedButton from '../../../utils/AdornedButton';
@@ -54,10 +55,8 @@ const Register = ({ isSignUpMode }) => {
 		// Check for register error
 		if (error.id === 'REGISTER_FAIL') {
 			setButtonLoading(false);
-			// set error toast notification
-			// setMsg(error.msg.msg);
+			toast.error('Unsuccessful registration. Please try again!');
 		} else {
-			// setMsg(null);
 			setButtonLoading(false);
 		}
 	}, [error]);

@@ -1,16 +1,23 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IconButton, Badge } from '@material-ui/core';
+import { IconButton, Badge, ClickAwayListener } from '@material-ui/core';
+
+import { logOut } from '../../store/actions/auth';
 import Profile from '../../assets/images/profile.jpg';
 
 const Navbar = ({
-	dropdownRef,
 	searchToggled,
 	handleSearchToggle,
+	handleClickAway,
 	onClick,
 	sidebar,
-	isActive,
+	open,
 }) => {
+	const dispatch = useDispatch();
+	const signOut = () => {
+		dispatch(logOut());
+	};
 	return (
 		<>
 			<nav className={sidebar ? 'nav active' : 'nav'}>
@@ -147,28 +154,29 @@ const Navbar = ({
 								</Badge>
 							</IconButton>
 						</div>
-						<div className="menu-container">
-							<button onClick={onClick} className="menu-trigger">
-								<span>Admin</span>
-								<img src={Profile} alt="User avatar" />
-							</button>
-							<div
-								ref={dropdownRef}
-								className={`menu ${isActive ? 'active' : 'inactive'}`}
-							>
-								<ul>
-									<li>
-										<Link to="#">Profile</Link>
-									</li>
-									<li>
-										<Link to="#">Settings</Link>
-									</li>
-									<li>
-										<Link to="#">Provider Profiles</Link>
-									</li>
-								</ul>
+						<ClickAwayListener onClickAway={handleClickAway}>
+							<div className="menu-container">
+								<button onClick={onClick} className="menu-trigger">
+									<span>Admin</span>
+									<img src={Profile} alt="User avatar" />
+								</button>
+								<div className={`menu ${open ? 'active' : 'inactive'}`}>
+									<ul>
+										<li>
+											<Link to="#">Profile</Link>
+										</li>
+										<li>
+											<Link to="#">Settings</Link>
+										</li>
+										<li>
+											<Link to="#" onClick={signOut}>
+												Logout
+											</Link>
+										</li>
+									</ul>
+								</div>
 							</div>
-						</div>
+						</ClickAwayListener>
 					</div>
 				</div>
 			</nav>

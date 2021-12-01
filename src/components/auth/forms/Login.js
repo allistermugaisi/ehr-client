@@ -12,7 +12,7 @@ import Input from '../../../utils/useInput';
 const Login = ({ isSignUpMode }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const location = useLocation();
+	let location = useLocation();
 
 	let error = useSelector((state) => state.error);
 	let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -45,10 +45,7 @@ const Login = ({ isSignUpMode }) => {
 		if (error.id === 'LOGIN_FAIL') {
 			setButtonLoading(false);
 			toast.error('Invalid login credentials!');
-			// set error toast notification
-			// setMsg(error.msg.msg);
 		} else {
-			// setMsg(null);
 			setButtonLoading(false);
 		}
 	}, [error]);

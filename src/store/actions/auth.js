@@ -21,7 +21,7 @@ import toast from 'react-hot-toast';
 
 export const tokenConfig = () => {
 	// Get token from localStorage
-	const token = localStorage.getItem('token');
+	const token = localStorage.getItem('userToken');
 	// console.log(token);
 
 	// Headers
@@ -128,7 +128,7 @@ export const loginUser = (payload) => async (dispatch) => {
 			body,
 			config
 		);
-		console.log(response.data);
+		// console.log(response.data);
 
 		localStorage.setItem('userToken', response.data.token);
 		toast.success('Successfully logged in!');
@@ -148,7 +148,7 @@ export const loginUser = (payload) => async (dispatch) => {
 
 // Logout User
 export const logOut = () => (dispatch) => {
-	localStorage.removeItem('token');
+	localStorage.removeItem('userToken');
 	toast.success('Successfully logged out!');
 	dispatch({
 		type: LOGOUT_SUCCESS,

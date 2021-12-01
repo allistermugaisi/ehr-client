@@ -89,7 +89,7 @@ const Sidebar = ({ toggled, handleDrawerToggle }) => {
 						<span className="tooltip">Reports</span>
 					</li>
 				</ul>
-				<div className="profile_content" onClick={signOut}>
+				<div className="profile_content">
 					<div className="profile">
 						<div className="profile_details">
 							<img src={Profile} alt="profile" />
@@ -98,7 +98,7 @@ const Sidebar = ({ toggled, handleDrawerToggle }) => {
 								<div className="job">Provider</div>
 							</div>
 						</div>
-						<i className="bx bx-log-out" id="log_out"></i>
+						<i className="bx bx-log-out" onClick={signOut} id="log_out"></i>
 					</div>
 				</div>
 			</div>

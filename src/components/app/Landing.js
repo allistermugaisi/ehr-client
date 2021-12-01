@@ -1,17 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Sidebar, Navbar, Routes } from './index';
-import { useDetectOutsideClick } from '../../utils/useDetectOutsideClick';
 import './Landing.css';
 
 const Landing = () => {
-	const dropdownRef = useRef(null);
 	const [toggled, setToggled] = useState(false);
 	const [searchToggled, setSearchToggled] = useState(false);
-	const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
+	const [open, setOpen] = useState(false);
 
-	console.log(isActive);
+	const handleClickAway = () => {
+		setOpen(false);
+	};
 
-	const onClick = () => setIsActive(!isActive);
+	const onClick = () => setOpen(!open);
 
 	const handleDrawerToggle = () => {
 		setToggled(!toggled);
@@ -26,11 +26,11 @@ const Landing = () => {
 			<Sidebar toggled={toggled} handleDrawerToggle={handleDrawerToggle} />
 			<div className="home_content">
 				<Navbar
-					dropdownRef={dropdownRef}
 					sidebar={toggled}
 					searchToggled={searchToggled}
 					handleSearchToggle={handleSearchToggle}
-					isActive={isActive}
+					handleClickAway={handleClickAway}
+					open={open}
 					onClick={onClick}
 				/>
 				<Routes />
