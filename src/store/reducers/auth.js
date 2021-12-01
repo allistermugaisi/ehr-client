@@ -7,10 +7,12 @@ import {
 	LOGOUT_SUCCESS,
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
+	VERIFY_EMAIL,
 } from '../../constants/types';
 
 const initialState = {
 	isAuthenticated: !!localStorage.getItem('token'),
+	isEmailVerified: false,
 	isAdmin: false,
 	isLoading: false,
 	user: null,
@@ -31,9 +33,12 @@ export default function AuthReducer(state = initialState, action) {
 				isLoading: false,
 				user: action.payload,
 			};
+		case VERIFY_EMAIL:
+			return {
+				isEmailVerified: true,
+			};
 		case LOGIN_SUCCESS:
 		case REGISTER_SUCCESS:
-			localStorage.setItem('token', action.payload.token);
 			return {
 				...state,
 				...action.payload,
@@ -45,7 +50,6 @@ export default function AuthReducer(state = initialState, action) {
 		case LOGIN_FAIL:
 		case LOGOUT_SUCCESS:
 		case REGISTER_FAIL:
-			localStorage.removeItem('token');
 			return {
 				...state,
 				user: null,

@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
+
+import { loginUser } from '../../../store/actions/auth';
 import AdornedButton from '../../../utils/AdornedButton';
 import Input from '../../../utils/useInput';
 
 const Login = ({ isSignUpMode }) => {
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const location = useLocation();
+
+	let error = useSelector((state) => state.error);
+	let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+	let { from } = location.state || { from: { pathname: '/' } };
+
 	const [showPassword, setShowPassword] = useState(false);
 	const [buttonLoading, setButtonLoading] = useState(false);
 
@@ -19,14 +30,33 @@ const Login = ({ isSignUpMode }) => {
 		shouldFocusError: true,
 	});
 
-	const onSubmit = (data, e) => {
+	const onSubmit = async (data, e) => {
 		e.preventDefault();
 		setButtonLoading(true);
-		console.log(data);
+		await dispatch(loginUser(data));
 	};
 
 	const handleShowPassword = () =>
 		setShowPassword((prevShowPassword) => !prevShowPassword);
+
+	useEffect(() => {
+		// Check for register error
+		if (error.id === 'LOGIN_FAIL') {
+			setButtonLoading(false);
+			// set error toast notification
+			// setMsg(error.msg.msg);
+		} else {
+			// setMsg(null);
+			setButtonLoading(false);
+		}
+	}, [error]);
+
+	useEffect(() => {
+		if (isAuthenticated) {
+			history.replace(from);
+		}
+		// eslint-disable-next-line
+	}, [isAuthenticated]);
 
 	return (
 		<>
@@ -59,6 +89,7 @@ const Login = ({ isSignUpMode }) => {
 							message: 'Password should be atleast 8 characters',
 						},
 					})}
+					ref={null}
 					name="password"
 					type={showPassword ? 'text' : 'password'}
 					label="Password"

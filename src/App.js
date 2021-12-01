@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Landing, Auth } from './components';
+import { Landing, Auth, EmailVerify } from './components';
 import { LoadingSpinner } from './utils/LoadingSpinner';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -35,6 +35,7 @@ function App() {
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/:id" component={Landing} />
 						<Route path="/auth/signin" component={Auth} />
+						<Route path="/auth/verify" component={EmailVerify} />
 					</Suspense>
 					{/* <Route path="/payment" component={Payment} /> */}
 				</Switch>

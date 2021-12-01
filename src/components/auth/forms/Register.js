@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
+
+import { registerUser } from '../../../store/actions/auth';
 import AdornedButton from '../../../utils/AdornedButton';
 import Input from '../../../utils/useInput';
 
 const Register = ({ isSignUpMode }) => {
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const location = useLocation();
+
+	let error = useSelector((state) => state.error);
+	let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+	let { from } = location.state || { from: { pathname: '/' } };
+
 	const [showPassword, setShowPassword] = useState(false);
 	const [buttonLoading, setButtonLoading] = useState(false);
 
@@ -19,32 +30,78 @@ const Register = ({ isSignUpMode }) => {
 		shouldFocusError: true,
 	});
 
-	const onSubmit = (data, e) => {
+	const onSubmit = async (data, e) => {
 		e.preventDefault();
 		setButtonLoading(true);
-		console.log(data);
+
+		const { name, practice_name, email, phone, password } = data;
+
+		const payload = {
+			name,
+			practice_name,
+			email,
+			phone,
+			password,
+			password_confirmation: password,
+		};
+		await dispatch(registerUser(payload));
 	};
 
 	const handleShowPassword = () =>
 		setShowPassword((prevShowPassword) => !prevShowPassword);
+
+	useEffect(() => {
+		// Check for register error
+		if (error.id === 'REGISTER_FAIL') {
+			setButtonLoading(false);
+			// set error toast notification
+			// setMsg(error.msg.msg);
+		} else {
+			// setMsg(null);
+			setButtonLoading(false);
+		}
+	}, [error]);
+
+	useEffect(() => {
+		if (isAuthenticated) {
+			history.replace(from);
+			isSignUpMode();
+		}
+		// eslint-disable-next-line
+	}, [isAuthenticated]);
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)} className="sign-up-form">
 				<h2 className="title">Sign up</h2>
 				<TextField
 					{...register('name', {
-						required: 'Username is required!',
+						required: 'Your Name is required!',
 						shouldFocus: true,
 					})}
 					name="name"
 					type="text"
 					variant="outlined"
-					label="Username"
+					label="Your Name"
 					margin="normal"
 					autoComplete="off"
 					fullWidth
 					error={errors?.name ? true : false}
 					helperText={errors?.name?.message}
+				/>
+				<TextField
+					{...register('practice_name', {
+						required: 'Practice Name is required!',
+						shouldFocus: true,
+					})}
+					name="practice_name"
+					type="text"
+					variant="outlined"
+					label="Practice Name"
+					margin="normal"
+					autoComplete="off"
+					fullWidth
+					error={errors?.practice_name ? true : false}
+					helperText={errors?.practice_name?.message}
 				/>
 				<TextField
 					{...register('email', {
@@ -65,6 +122,25 @@ const Register = ({ isSignUpMode }) => {
 					error={errors?.email ? true : false}
 					helperText={errors?.email?.message}
 				/>
+				<TextField
+					{...register('phone', {
+						required: 'Mobile number is required!',
+						pattern: {
+							value: /^(\+254|0)[1-9]\d{8}$/i,
+							message: 'Please enter a valid mobile number',
+						},
+					})}
+					label="Mobile number"
+					placeholder="07xxxxxxxx"
+					name="phone"
+					type="number"
+					margin="normal"
+					variant="outlined"
+					autoComplete="off"
+					fullWidth
+					error={errors?.phone ? true : false}
+					helperText={errors?.phone?.message}
+				/>
 				<Input
 					{...register('password', {
 						required: 'Password is required!',
@@ -73,6 +149,7 @@ const Register = ({ isSignUpMode }) => {
 							message: 'Password should be atleast 8 characters',
 						},
 					})}
+					ref={null}
 					name="password"
 					type={showPassword ? 'text' : 'password'}
 					label="Password"

@@ -6,5 +6,7 @@ export const LOGIN_FAIL = 'login_fail';
 export const LOGOUT_SUCCESS = 'logout_success';
 export const REGISTER_SUCCESS = 'register_success';
 export const REGISTER_FAIL = 'register_fail';
+export const VERIFY_EMAIL = 'verify_email';
 export const GET_ERRORS = 'get_errors';
 export const CLEAR_ERRORS = 'clear_errors';
+export const EMAIL_VERIFY_ERROR = 'email_verify_error';
